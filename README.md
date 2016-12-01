@@ -136,3 +136,9 @@ echo 'Push new build to registory'
 sh 'docker push 172.31.7.232:5000/python-redis-demo:b${BUILD_NUMBER}'
 sh 'docker rmi 172.31.7.232:5000/python-redis-demo:b${BUILD_NUMBER}'
 }
+
+## 建立 CD 流水线
+
+点击 new item --- Pipleline -- Pipeline -- Git  -- https://github.com/martinliu/cd-demo.git  -- Save
+
+点击 Build Now
