@@ -49,7 +49,7 @@ sudo docker run -d --privileged -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 生产API key 备用
 
-点击 API -- Add account api key -- 输入名称和描述 -- 复制出页面上的秘钥
+点击 API -- Environment API Keys -- 输入名称和描述 -- 复制出页面上的秘钥
 
 API Key Created
 
