@@ -1,0 +1,24 @@
+stage 'Build'
+node("master") {
+   echo 'Check out code and build image'
+   git 'https://github.com/martinliu/cd-demo.git'
+   dir('./pyapp/src') {
+    echo 'Build new image'
+    sh 'docker build -t $$RegURL$$/python-redis-demo:b${BUILD_NUMBER} .'
+}
+}
+
+stage 'Ship'
+node("master") {
+   echo 'Push new images'
+   sh 'docker push $$RegURL$$/python-redis-demo:b${BUILD_NUMBER}'
+}
+
+stage 'Deploy'
+node("master") {
+   echo 'Deploy new service to QA'
+   dir('./pyapp/test-build') {
+    // run Rancher deploy script
+    sh 'sh ./test-build.sh'
+}
+}
